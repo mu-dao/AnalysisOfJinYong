@@ -1,7 +1,7 @@
 package pageRank;
 
 public class PageRankDriver {
-	private static int times = 20;
+	private static int times = 12;
 	public static void main(String[] args) throws Exception{
 		//pagerank预处理
 		String[] forItr = { "", ""};
@@ -17,7 +17,7 @@ public class PageRankDriver {
 			PageRank.main(pagerank);
 		}
 		//对pagerank结果从小到大排序
-		String[] forRv = { args[1] + "/Data" + times, args[1] + "/FinalRank" };
+		String[] forRv = { args[1] + "/Data" + times, args[1] + "/Final" };
 		Sort.main(forRv);
 	}
 }

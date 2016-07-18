@@ -19,13 +19,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-/*
- * 
-	WordCut类一次性完成题目要求的任务一、任务二、任务三，一趟就能跑完，算是优化。
-	导出jar包的方式：在src文件夹右键，选择export，选择java，选择Runable JAR file，选择WordCut类,命名为wordCut.jar
-	运行方式：登录到集群上，使用hadoop jar wordCut.jar /data/task2/novels /data/task2/people_name_list.txt out
- *
+/**
+ * WordCut类一次性完成题目要求的任务一、任务二、任务三，一趟就能跑完，算是优化。
+ * 导出jar包的方式：在src文件夹右键，选择export，选择java，选择Runable JAR file，选择WordCut类,命名为wordCut.jar
+ * 运行方式：登录到集群上，使用hadoop jar wordCut.jar /data/task2/novels /data/task2/people_name_list.txt out
  */
+
 public class WordCut {
 	
 	//Map阶段
@@ -137,7 +136,8 @@ public class WordCut {
         		res.append(name + "," + p);
         		res.append(" | ");
         	}
-        	context.write(key, new Text(res.toString()));
+        	String keyName = String.format("%-10s", key.toString());
+        	context.write(new Text(keyName), new Text(res.toString()));
         }
     }
 

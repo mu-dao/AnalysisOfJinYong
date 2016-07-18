@@ -42,7 +42,7 @@ public class ExportNodeCSV {
         	map.put(name, tmp[1]);
         }
         nbr.close();
-        //数据
+        //读取标签传播的结果
         List<List<Object>> dataList = new ArrayList<List<Object>>();
         List<Object> rowList = null;
         File f = new File("H://label");
@@ -53,11 +53,11 @@ public class ExportNodeCSV {
         	String[] tmp = text.split("\t");
         	if(tmp.length >= 2){
         		rowList = new ArrayList<Object>();
-        		String idLabel = tmp[0].trim();
+        		String idLabel = tmp[1];
         		rowList.add(idLabel);
         		rowList.add(idLabel);
-        		String myClass = tmp[1].trim();
-        		rowList.add(myClass.substring(1, tmp[1].length() - 1));
+        		String myClass = tmp[0].trim();
+        		rowList.add(myClass.substring(1, myClass.length() - 1));
         		rowList.add(map.get(idLabel));
         		dataList.add(rowList);
         	}

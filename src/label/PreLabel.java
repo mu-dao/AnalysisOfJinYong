@@ -21,10 +21,10 @@ public class PreLabel {
 		public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 			String line = value.toString();
 			String[] tuple = line.split("\t");
-			String keyName = tuple[0];
-			StringBuffer newLink = new StringBuffer();
 			//加强版标签传播，加入了rank值
 			if(tuple.length >= 2){
+				String keyName = tuple[0].trim();
+				StringBuffer newLink = new StringBuffer();
 	        	//读取人名rank值文件，该文件在main方法中已经加载到distributed Cache中
 	        	@SuppressWarnings("deprecation")
 				Path[] localFiles = context.getLocalCacheFiles();

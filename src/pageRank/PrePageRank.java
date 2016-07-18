@@ -9,7 +9,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-/*
+/**
  * 计算一轮pagerank值，对输出格式进行调整，为pagerank算法的多次迭代做准备
  */
 public class PrePageRank{
@@ -24,7 +24,7 @@ public class PrePageRank{
 			String line = value.toString();
 			String[] tuple = line.split("\t");
 			if(tuple.length >= 2){
-				String A = tuple[0];
+				String A = tuple[0].trim();
 				String[] array = tuple[1].split(" | ");//以" | "对人名列表做分割，分割出一个个形如B,weight的单元，存储在array中
 				
 				for (int i = 0; i < array.length; i++) {

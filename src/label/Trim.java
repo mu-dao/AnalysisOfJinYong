@@ -19,17 +19,17 @@ public class Trim {
 			if(tuple.length >= 3){
 				String keyName = tuple[0];//»À√˚
 				String label = tuple[1];//±Í«©
-				context.write(new Text(keyName), new Text(label));
+				context.write(new Text(label), new Text(keyName));
 			}
 		}
 	}
 	
 	public static class TrimReducer extends Reducer<Text, Text, Text, Text> {
 		public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+			String[] label = key.toString().split(",");
+			String keyName = String.format("%-8s", label[0] + "#");
 			for(Text value : values){
-				String keyName = String.format("%-8s", key.toString());
-				String[] label = value.toString().split(",");
-				context.write(new Text(keyName), new Text(label[0] + "#"));
+				context.write(new Text(keyName), new Text(value));
 			}
 		}
 	}
